@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7370195278268606386}
-  - {fileID: 2249975516943448877}
+  - {fileID: 7134567213502426602}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!143 &-7688875948217242496
@@ -195,12 +195,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f78ba41432fc0041a37dd139a11d332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
   laneDistance: 5
   jumpForce: 5
   gravity: -9.81
-  groundedThreshold: 0.1
+  lateralSpeed: 10
+  gravityMultiplier: 5
+  visualModel: {fileID: 7134567213502426602}
+  slideDuration: 0.5
+  rotationSpeed: 10
   isNearWall: 0
+--- !u!1 &4944467869188885264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7134567213502426602}
+  m_Layer: 8
+  m_Name: Model
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7134567213502426602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4944467869188885264}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2249975516943448877}
+  m_Father: {fileID: 5408262433001789634}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7524581055086492763
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,12 +293,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8350604549770839579}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5408262433001789634}
+  m_Father: {fileID: 7134567213502426602}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4162302614513470417
 MeshFilter:
