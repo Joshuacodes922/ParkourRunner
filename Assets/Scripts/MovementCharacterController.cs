@@ -110,7 +110,7 @@ public class Movement : MonoBehaviour
         {
             if (isNearWall)
             {
-                verticalVelocity = jumpForce * 5;
+                verticalVelocity = jumpForce * 3;
                 return;
             }
             verticalVelocity = jumpForce;
