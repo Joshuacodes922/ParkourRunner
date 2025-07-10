@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7268437749133739662}
   - component: {fileID: 1106452876969050865}
   - component: {fileID: 3222620842752726757}
+  - component: {fileID: 7983397049646086950}
   m_Layer: 8
   m_Name: Player Capsule Character controller
   m_TagString: Player
@@ -203,7 +204,20 @@ MonoBehaviour:
   visualModel: {fileID: 7134567213502426602}
   slideDuration: 0.5
   rotationSpeed: 10
+  slideRadiusMultiplier: 0.5
   isNearWall: 0
+--- !u!114 &7983397049646086950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4100572092669051705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e18c1ddad1423f546a03925afc92c71c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4944467869188885264
 GameObject:
   m_ObjectHideFlags: 0
