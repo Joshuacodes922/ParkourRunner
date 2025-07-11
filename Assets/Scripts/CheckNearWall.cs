@@ -16,9 +16,9 @@ public class CheckNearWall : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             movement = other.GetComponent<Movement>();
-            Debug.Log("Enter Player" + movement.isNearWall);
+  
             movement.checkNearWall(true);
-            Debug.Log("Enter Player" + movement.isNearWall);
+           
 
         }
     }
@@ -27,7 +27,6 @@ public class CheckNearWall : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Exit trigger");
             movement.checkNearWall(false);
         }
     }

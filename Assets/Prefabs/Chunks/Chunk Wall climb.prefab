@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 7571658891330539553}
   m_Layer: 0
   m_Name: Chunk Wall climb
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,7 +171,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 39.89, y: 1, z: 14.99}
+  m_Size: {x: 40.1, y: 1.6, z: 14.99}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &7571658891330539553
 BoxCollider:
@@ -192,7 +192,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.46, y: 12.41, z: 12.2}
+  m_Size: {x: 2.07, y: 12.81, z: 12.2}
   m_Center: {x: 17.91, y: 6.9, z: 0}
 --- !u!1 &7462671351449101308
 GameObject:

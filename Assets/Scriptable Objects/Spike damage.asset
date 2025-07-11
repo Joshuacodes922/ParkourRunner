@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747e5e2e6a27294488bb658e5754b190, type: 3}
   m_Name: Spike damage
   m_EditorClassIdentifier: 
+  name: Spike
+  damage: 1
