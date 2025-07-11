@@ -5,9 +5,12 @@ using UnityEngine;
 public class ProcedurallevelGeneration : MonoBehaviour
 {
     [SerializeField] GameObject chunk;
+    [SerializeField] GameObject zipline;
     [SerializeField] Transform chunkParent;
     [SerializeField] int speed=10;
     List<GameObject> chunks = new List<GameObject>();
+    int numberOfChunks = 0;
+    int chunksBeforeZipline = 10;
 
     int xOffset = 40;
     int zOffest = 15;
@@ -32,6 +35,7 @@ public class ProcedurallevelGeneration : MonoBehaviour
         {
             GameObject chunk1 = Instantiate(chunk, transform.position + new Vector3(incrementer, 0, 0), Quaternion.identity, chunkParent);
             incrementer += xOffset;
+            numberOfChunks++;
             chunks.Add(chunk1);
         }
     }
@@ -49,13 +53,25 @@ public class ProcedurallevelGeneration : MonoBehaviour
     {
         if (chunks[0].transform.position.x < Camera.main.transform.position.x - 40)
         {
+            float offsetToUse = xOffset;
             GameObject firstChunk = chunks[0];
-
             chunks.RemoveAt(0);
-            firstChunk.transform.position = chunks[chunks.Count-1].transform.position+new Vector3(xOffset,0,0);
+
+            numberOfChunks++; 
+
+            if (numberOfChunks >= chunksBeforeZipline)
+            {
+                GameObject destroyedChunk = firstChunk;
+                firstChunk = Instantiate(zipline, Vector3.zero, Quaternion.identity, chunkParent);
+                numberOfChunks = 0;
+                Destroy(destroyedChunk);
+            }
+
+            firstChunk.transform.position = chunks[chunks.Count - 1].transform.position + new Vector3(offsetToUse, 0, 0);
             chunks.Add(firstChunk);
         }
     }
 
-    
+
+
 }
