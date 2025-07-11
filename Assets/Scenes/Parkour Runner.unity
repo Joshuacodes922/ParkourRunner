@@ -718,6 +718,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4502917782501500948, guid: c51d6cfe5946e07429a76c9df10dcad8, type: 3}
+      propertyPath: zipline
+      value: 
+      objectReference: {fileID: 7784899383124302627, guid: 9ca22411db8eb8242b920f7eb248acaf, type: 3}
+    - target: {fileID: 4502917782501500948, guid: c51d6cfe5946e07429a76c9df10dcad8, type: 3}
       propertyPath: chunkParent
       value: 
       objectReference: {fileID: 363435178}
