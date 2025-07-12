@@ -10,7 +10,9 @@ public class ProcedurallevelGeneration : MonoBehaviour
     [SerializeField] int speed=10;
     List<GameObject> chunks = new List<GameObject>();
     int numberOfChunks = 0;
-    int chunksBeforeZipline = 10;
+    [SerializeField] int chunksBeforeZipline = 10;
+
+   
 
     int xOffset = 40;
     int zOffest = 15;
@@ -31,7 +33,7 @@ public class ProcedurallevelGeneration : MonoBehaviour
     private void SpawnChunks()
     {
         incrementer = 0;
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < chunksBeforeZipline; i++)
         {
             GameObject chunk1 = Instantiate(chunk, transform.position + new Vector3(incrementer, 0, 0), Quaternion.identity, chunkParent);
             incrementer += xOffset;
@@ -51,7 +53,15 @@ public class ProcedurallevelGeneration : MonoBehaviour
 
     public void DestroyAndCreate()
     {
-        if (chunks[0].transform.position.x < Camera.main.transform.position.x - 40)
+        int chunkDestructionDistance = 40;
+        
+
+        if (chunks[0].GetComponent<Zipline>())
+        {
+            chunkDestructionDistance *= 5;
+        }
+
+        if (chunks[0].transform.position.x < Camera.main.transform.position.x - chunkDestructionDistance)
         {
             float offsetToUse = xOffset;
             GameObject firstChunk = chunks[0];

@@ -1,3 +1,5 @@
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +16,18 @@ public class Movement : MonoBehaviour
     [SerializeField] private float slideDuration = 0.5f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private float slideRadiusMultiplier = 0.5f; // shrink radius to 50% when sliding
+
+    //Zipline Player Offset
+    float yOffsetZipline = 5f;
+    float xOffsetZipline = 1.5f;
+    GameObject ziplineHandle;
+    
+
+    Vector3 originalPositionBeforeZipline;
+    Quaternion originalRotationBeforeZipline;
+
+    bool isNearZipline = false;
+    bool isOnZipline = false;
 
     public bool isNearWall = false;
 
@@ -48,25 +62,45 @@ public class Movement : MonoBehaviour
 
     private void Update()
     {
-        // LANE POSITION in Z
-        float targetZ = (targetLane - 1) * laneDistance;
-        float deltaZ = targetZ - transform.position.z;
-        float zMovement = Mathf.Clamp(deltaZ * lateralSpeed, -lateralSpeed, lateralSpeed);
 
-        // JUMP + GRAVITY
-        if (controller.isGrounded)
-        {
-            if (verticalVelocity < 0)
-                verticalVelocity = -2f; // Keeps grounded
-        }
-        else
-        {
-            verticalVelocity += gravity * Time.deltaTime * gravityMultiplier;
-        }
+        if (isOnZipline) return;
+        MoveCharacter();
+        SlideCharacter();
+    }
 
-        Vector3 moveDirection = new Vector3(0f, verticalVelocity, zMovement);
-        controller.Move(moveDirection * Time.deltaTime);
+    public void AttachToRope(Transform targetTransform, GameObject parent)
+    {
+        originalPositionBeforeZipline = transform.position;
+        originalRotationBeforeZipline = transform.rotation;
+        isOnZipline = true;
+        //// Optionally disable the controller to avoid physics conflict
+        //controller.enabled = false;
 
+        // Snap the player to the handle's position and rotation
+        transform.position = new Vector3(targetTransform.position.x - 1.5f, targetTransform.position.y - 3, targetTransform.position.z);
+
+        ziplineHandle = parent;
+
+        // Optional: parent to the handle if you want the player to move with it
+        transform.parent = targetTransform;
+
+        // Zero out movement
+        verticalVelocity = 0f;
+    }
+
+    public void detachFromRope()
+    {
+        isOnZipline = false;
+        controller.enabled = true;
+        transform.position = originalPositionBeforeZipline;
+        transform.rotation = originalRotationBeforeZipline;
+        Destroy(ziplineHandle);
+        transform.parent = null;
+        
+    }
+
+    private void SlideCharacter()
+    {
         // Slide logic
         if (isSliding)
         {
@@ -92,6 +126,28 @@ public class Movement : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void MoveCharacter()
+    {
+        // LANE POSITION in Z
+        float targetZ = (targetLane - 1) * laneDistance;
+        float deltaZ = targetZ - transform.position.z;
+        float zMovement = Mathf.Clamp(deltaZ * lateralSpeed, -lateralSpeed, lateralSpeed);
+
+        // JUMP + GRAVITY
+        if (controller.isGrounded)
+        {
+            if (verticalVelocity < 0)
+                verticalVelocity = -2f; // Keeps grounded
+        }
+        else
+        {
+            verticalVelocity += gravity * Time.deltaTime * gravityMultiplier;
+        }
+
+        Vector3 moveDirection = new Vector3(0f, verticalVelocity, zMovement);
+        controller.Move(moveDirection * Time.deltaTime);
     }
 
     void OnMove(InputValue value)
@@ -128,7 +184,7 @@ public class Movement : MonoBehaviour
         {
             isSliding = true;
             slideTimer = slideDuration;
-
+ 
             // Shrink collider for slide: height, center, AND radius
             controller.height = originalHeight / 3f;
             controller.center = originalCenter - new Vector3(0, originalHeight / 4f, 0);
