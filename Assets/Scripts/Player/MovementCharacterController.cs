@@ -73,15 +73,20 @@ public class Movement : MonoBehaviour
         isNearZipline = false;
         jumpedNearZipline = false;
         speedMultiplier = 1.1f;
-        
+        cursorManagment();
 }
 
     private void Update()
     {
-        Debug.Log(jumpedNearZipline);
+        
         if (isOnZipline) return;
         MoveCharacter();
         SlideCharacter();
+    }
+    void cursorManagment()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     public void AttachToRope(Transform targetTransform, GameObject parent)

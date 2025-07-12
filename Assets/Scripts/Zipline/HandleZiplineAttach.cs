@@ -17,7 +17,7 @@ public class HandleZiplineAttach : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Animation speed: " + animationSpeed);
+        
         if (!entered || attached) return;
 
         var movement = player?.GetComponent<Movement>();

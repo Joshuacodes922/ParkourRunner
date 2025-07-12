@@ -30,7 +30,7 @@ public class ProcedurallevelGeneration : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Speed: " + speed);
+        
         IncrementSpeed();
         move();
         DestroyAndCreate();
