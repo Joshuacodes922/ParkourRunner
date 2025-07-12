@@ -72,7 +72,7 @@ public class Movement : MonoBehaviour
 
         isNearZipline = false;
         jumpedNearZipline = false;
-        speedMultiplier = 5f;
+        speedMultiplier = 1.1f;
         
 }
 
