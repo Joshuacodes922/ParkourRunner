@@ -6,7 +6,8 @@ public class HandleZiplineDetach : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player")) return;
         Debug.Log("Player has exited the zipline");
-
+        other.gameObject.GetComponent<Movement>().isNearZipline = false;
+        other.gameObject.GetComponent<Movement>().jumpedNearZipline = false;
         other.gameObject.GetComponent<Movement>().detachFromRope();
     }
 }

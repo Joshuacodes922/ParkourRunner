@@ -2,31 +2,44 @@ using UnityEngine;
 
 public class HandleZiplineAttach : MonoBehaviour
 {
-    bool jumped = true;
     [SerializeField] Transform childHandle;
-    
     Animator animator;
+
+    GameObject player;
+    bool entered = false;
+    bool attached = false;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void Update()
     {
         
-        if (!other.gameObject.CompareTag("Player")) return;
-        Debug.Log("Player is ready to enter the zipline");
-        if (jumped)
-        {
-            transform.parent = null;
-            
-            //Call attach method for player.
-            other.gameObject.GetComponent<Movement>()?.AttachToRope(childHandle,gameObject);
-            animator.enabled = true;
-        }
+        if (!entered || attached) return;
 
+        var movement = player?.GetComponent<Movement>();
         
+        if (movement == null) return;
+
+        if (movement.jumpedNearZipline)
+        {
+            movement.jumpedNearZipline = false; // reset after use
+            attached = true;
+            animator.enabled = true;
+            transform.parent = null;
+            movement.AttachToRope(childHandle, gameObject);
+        }
     }
 
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        player = other.gameObject;
+        player.GetComponent<Movement>().isNearZipline = true;
+        entered = true;
+        Debug.Log("Player is ready to enter the zipline");
+    }
 }

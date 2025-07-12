@@ -26,7 +26,8 @@ public class Movement : MonoBehaviour
     Vector3 originalPositionBeforeZipline;
     Quaternion originalRotationBeforeZipline;
 
-    bool isNearZipline = false;
+    public bool isNearZipline = false;
+    public bool jumpedNearZipline = false;
     bool isOnZipline = false;
 
     public bool isNearWall = false;
@@ -58,11 +59,14 @@ public class Movement : MonoBehaviour
 
         if (visualModel != null)
             originalVisualRotation = visualModel.localRotation;
-    }
+
+        isNearZipline = false;
+        jumpedNearZipline = false;
+}
 
     private void Update()
     {
-
+        Debug.Log(jumpedNearZipline);
         if (isOnZipline) return;
         MoveCharacter();
         SlideCharacter();
@@ -168,6 +172,11 @@ public class Movement : MonoBehaviour
             {
                 verticalVelocity = jumpForce * 3;
                 return;
+            }
+
+            if (isNearZipline)
+            {
+                jumpedNearZipline = true;
             }
             verticalVelocity = jumpForce;
         }
