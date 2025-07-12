@@ -17,6 +17,8 @@ public class Movement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private float slideRadiusMultiplier = 0.5f; // shrink radius to 50% when sliding
 
+    
+
     //Zipline Player Offset
     float yOffsetZipline = 5f;
     float xOffsetZipline = 1.5f;
@@ -49,6 +51,14 @@ public class Movement : MonoBehaviour
     private Vector3 originalCenter;
     private float originalRadius;
 
+    //Speed multiplier
+    public float speedMultiplier = 1.1f;
+    public float animationMultiplier = 1;
+
+    public bool getJumpedOnZipline()
+    {
+        return jumpedNearZipline;
+    }
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -62,6 +72,8 @@ public class Movement : MonoBehaviour
 
         isNearZipline = false;
         jumpedNearZipline = false;
+        speedMultiplier = 5f;
+        
 }
 
     private void Update()

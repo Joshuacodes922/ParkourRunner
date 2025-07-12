@@ -4,6 +4,7 @@ public class HandleZiplineAttach : MonoBehaviour
 {
     [SerializeField] Transform childHandle;
     Animator animator;
+    float animationSpeed = 1;
 
     GameObject player;
     bool entered = false;
@@ -16,7 +17,7 @@ public class HandleZiplineAttach : MonoBehaviour
 
     private void Update()
     {
-        
+        Debug.Log("Animation speed: " + animationSpeed);
         if (!entered || attached) return;
 
         var movement = player?.GetComponent<Movement>();
@@ -27,6 +28,8 @@ public class HandleZiplineAttach : MonoBehaviour
         {
             movement.jumpedNearZipline = false; // reset after use
             attached = true;
+            animationSpeed *= movement.animationMultiplier;
+            animator.speed *= animationSpeed;
             animator.enabled = true;
             transform.parent = null;
             movement.AttachToRope(childHandle, gameObject);

@@ -7,12 +7,16 @@ public class ProcedurallevelGeneration : MonoBehaviour
     [SerializeField] GameObject chunk;
     [SerializeField] GameObject zipline;
     [SerializeField] Transform chunkParent;
-    [SerializeField] int speed=10;
+    [SerializeField] float speed=10;
     List<GameObject> chunks = new List<GameObject>();
     int numberOfChunks = 0;
     [SerializeField] int chunksBeforeZipline = 10;
 
-   
+    int levelsCounter = 0;
+    
+
+    [SerializeField] GameObject player;
+
 
     int xOffset = 40;
     int zOffest = 15;
@@ -26,6 +30,8 @@ public class ProcedurallevelGeneration : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Speed: " + speed);
+        IncrementSpeed();
         move();
         DestroyAndCreate();
     }
@@ -48,6 +54,15 @@ public class ProcedurallevelGeneration : MonoBehaviour
         {
             i.transform.Translate(-transform.right * speed * Time.deltaTime);
 
+        }
+    }
+
+    public void IncrementSpeed()
+    {
+        if (player.gameObject.GetComponent<Movement>().getJumpedOnZipline())
+        {
+            speed *= player.gameObject.GetComponent<Movement>().speedMultiplier;
+            player.gameObject.GetComponent<Movement>().animationMultiplier *= player.gameObject.GetComponent<Movement>().speedMultiplier;
         }
     }
 
