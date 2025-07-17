@@ -55,6 +55,8 @@ public class Movement : MonoBehaviour
     public float speedMultiplier = 1.1f;
     public float animationMultiplier = 1;
 
+   
+
     public bool getJumpedOnZipline()
     {
         return jumpedNearZipline;
@@ -73,21 +75,21 @@ public class Movement : MonoBehaviour
         isNearZipline = false;
         jumpedNearZipline = false;
         speedMultiplier = 1.1f;
-        cursorManagment();
+        isNearWall = false;
+        
 }
 
     private void Update()
     {
+
+
+       
         
         if (isOnZipline) return;
         MoveCharacter();
         SlideCharacter();
     }
-    void cursorManagment()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
+    
 
     public void AttachToRope(Transform targetTransform, GameObject parent)
     {
@@ -201,7 +203,9 @@ public class Movement : MonoBehaviour
 
     public void checkNearWall(bool value)
     {
+        Debug.Log("isNearWall: " + isNearWall);
         isNearWall = value;
+        Debug.Log("isNearWall: " + isNearWall);
     }
 
     void OnSlide(InputValue value)

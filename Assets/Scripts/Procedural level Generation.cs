@@ -19,7 +19,7 @@ public class ProcedurallevelGeneration : MonoBehaviour
 
 
     int xOffset = 40;
-    int zOffest = 15;
+    int zOffest = 25;
 
     int incrementer;
 

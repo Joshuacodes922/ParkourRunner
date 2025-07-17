@@ -15,16 +15,14 @@ public class CheckNearWall : MonoBehaviour
         
         if (other.CompareTag("Player"))
         {
-            movement = other.GetComponent<Movement>();
-  
+            movement = other.gameObject.GetComponent<Movement>();
             movement.checkNearWall(true);
-           
-
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        
         if (other.gameObject.tag == "Player")
         {
             movement.checkNearWall(false);

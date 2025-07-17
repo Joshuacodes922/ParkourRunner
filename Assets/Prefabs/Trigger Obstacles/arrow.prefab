@@ -217,7 +217,6 @@ GameObject:
   - component: {fileID: 4619417628099322169}
   - component: {fileID: 4458444837687239373}
   - component: {fileID: 2446674151521901968}
-  - component: {fileID: 2519121269908342750}
   m_Layer: 0
   m_Name: arrow
   m_TagString: Untagged
@@ -278,12 +277,12 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2.19
+  m_Radius: 0.4
+  m_Height: 2.34
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2446674151521901968
@@ -298,30 +297,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72530786bd1e33a4d948f1df9ba61daf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &2519121269908342750
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6066974677859986115}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  ObstacleDamageSO: {fileID: 0}
