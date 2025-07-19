@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Platform
+  - Katana
   layers:
   - Default
   - TransparentFX
