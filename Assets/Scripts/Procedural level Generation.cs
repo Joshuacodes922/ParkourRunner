@@ -5,10 +5,13 @@ using UnityEngine;
 public class ProcedurallevelGeneration : MonoBehaviour
 {
     [SerializeField] GameObject chunk;
+    [SerializeField] GameObject[] chunkPrefabs;
+
     [SerializeField] GameObject zipline;
     [SerializeField] Transform chunkParent;
     [SerializeField] float speed=10;
     List<GameObject> chunks = new List<GameObject>();
+
     int numberOfChunks = 0;
     [SerializeField] int chunksBeforeZipline = 10;
 
@@ -41,7 +44,8 @@ public class ProcedurallevelGeneration : MonoBehaviour
         incrementer = 0;
         for (int i = 0; i < chunksBeforeZipline; i++)
         {
-            GameObject chunk1 = Instantiate(chunk, transform.position + new Vector3(incrementer, 0, 0), Quaternion.identity, chunkParent);
+            int randomChunkNumber = Random.Range(0, chunkPrefabs.Length);
+            GameObject chunk1 = Instantiate(chunkPrefabs[randomChunkNumber], transform.position + new Vector3(incrementer, 0, 0), Quaternion.identity, chunkParent);
             incrementer += xOffset;
             numberOfChunks++;
             chunks.Add(chunk1);
@@ -81,28 +85,31 @@ public class ProcedurallevelGeneration : MonoBehaviour
             float offsetToUse = xOffset;
             GameObject firstChunk = chunks[0];
             chunks.RemoveAt(0);
+            Destroy(firstChunk);
             numberOfChunks++;
 
             if (numberOfChunks >= chunksBeforeZipline)
             {
-                GameObject destroyedChunk = firstChunk;
-                firstChunk = Instantiate(zipline, Vector3.zero, Quaternion.identity, chunkParent);
-                numberOfChunks = 0;
+
                 offsetToUse = xOffset / 2;
-                Destroy(destroyedChunk);
+                GameObject zip = Instantiate(zipline, chunks[chunks.Count - 1].transform.position + new Vector3(offsetToUse, 0, 0), Quaternion.identity, chunkParent);
+                chunks.Add(zip);
+                numberOfChunks = 0;
             }
 
             Zipline zipline1 = chunks[chunks.Count - 1].GetComponent<Zipline>();
-
+            GameObject chunky;
             if (zipline1)
             {
-                firstChunk.transform.position = zipline1.endMarker.transform.position + new Vector3(xOffset / 2f, 0, 0);
-                chunks.Add(firstChunk);
+                int randomChunkNumber1 = Random.Range(0, chunkPrefabs.Length);
+                chunky = Instantiate(chunkPrefabs[randomChunkNumber1], zipline1.endMarker.transform.position + new Vector3(xOffset / 2f, 0, 0), Quaternion.identity, chunkParent);
+                chunks.Add(chunky);
                 return;
             }
 
-            firstChunk.transform.position = chunks[chunks.Count - 1].transform.position + new Vector3(offsetToUse, 0, 0);
-            chunks.Add(firstChunk);
+            int randomChunkNumber = Random.Range(0, chunkPrefabs.Length);
+            chunky = Instantiate(chunkPrefabs[randomChunkNumber], chunks[chunks.Count - 1].transform.position + new Vector3(offsetToUse, 0, 0), Quaternion.identity, chunkParent);
+            chunks.Add(chunky);
         }
     }
 

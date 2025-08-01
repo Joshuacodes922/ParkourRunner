@@ -428,37 +428,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 295426644622160489, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2474216667791007399, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222620842752726757, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-      propertyPath: jumpForce
-      value: 28
-      objectReference: {fileID: 0}
-    - target: {fileID: 3222620842752726757, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-      propertyPath: gravityMultiplier
-      value: 15
-      objectReference: {fileID: 0}
+    - target: {fileID: 28224538983405068, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
+      propertyPath: katana
+      value: 
+      objectReference: {fileID: 1697904938}
     - target: {fileID: 4100572092669051705, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
       propertyPath: m_Name
       value: Player Capsule Character controller
-      objectReference: {fileID: 0}
-    - target: {fileID: 4388009628427898676, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259152493392362081, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5259152493392362081, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.18
       objectReference: {fileID: 0}
     - target: {fileID: 5408262433001789634, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -500,21 +476,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7004379941125767983, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-      propertyPath: m_Name
-      value: Weapon Launcher
-      objectReference: {fileID: 0}
-    - target: {fileID: 7983397049646086950, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4100572092669051705, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1468674242}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
 --- !u!1 &683352710
 GameObject:
@@ -798,21 +763,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4100572092669051705, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
   m_PrefabInstance: {fileID: 506015963}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1468674242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1468674234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 877b805941968894d8c95f6e3cedb997, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  katana: {fileID: 1697904938}
-  weaponSO: {fileID: 0}
-  instantiationPoint: {fileID: 1926158224}
 --- !u!1 &1697904938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3727158129581976517, guid: 4b4d005bc0669e84793239ee880dbb13, type: 3}
@@ -932,11 +882,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8613331efefd3341b539ae18514c275, type: 3}
---- !u!1 &1926158224 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7004379941125767983, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-  m_PrefabInstance: {fileID: 506015963}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1950704879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1157,18 +1102,6 @@ PrefabInstance:
     - target: {fileID: 6494889446969081762, guid: 4b4d005bc0669e84793239ee880dbb13, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7329343524336540417, guid: 4b4d005bc0669e84793239ee880dbb13, type: 3}
-      propertyPath: m_Size.z
-      value: 2.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 7329343524336540417, guid: 4b4d005bc0669e84793239ee880dbb13, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7329343524336540417, guid: 4b4d005bc0669e84793239ee880dbb13, type: 3}
-      propertyPath: m_Center.z
-      value: 0.76
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -55,6 +55,9 @@ public class Movement : MonoBehaviour
     public float speedMultiplier = 1.1f;
     public float animationMultiplier = 1;
 
+    public double maxJumps = 1;
+    public double currentJumps = 0;
+
    
 
     public bool getJumpedOnZipline()
@@ -76,7 +79,9 @@ public class Movement : MonoBehaviour
         jumpedNearZipline = false;
         speedMultiplier = 1.1f;
         isNearWall = false;
-        
+        maxJumps = 1;
+        currentJumps = 0;
+
 }
 
     private void Update()
@@ -187,10 +192,15 @@ public class Movement : MonoBehaviour
     {
         if (controller.isGrounded)
         {
+            currentJumps = 0;
+            
             if (isNearWall)
             {
-                verticalVelocity = jumpForce * 3;
-                return;
+                maxJumps = 2;
+            }
+            else
+            {
+                maxJumps = 1;
             }
 
             if (isNearZipline)
@@ -198,6 +208,17 @@ public class Movement : MonoBehaviour
                 jumpedNearZipline = true;
             }
             verticalVelocity = jumpForce;
+            currentJumps++;
+
+        }
+        else if(!controller.isGrounded && currentJumps<maxJumps){
+            verticalVelocity = jumpForce;
+            currentJumps++;
+            if (currentJumps == maxJumps)
+            {
+                maxJumps = 1;
+                
+            }
         }
     }
 
