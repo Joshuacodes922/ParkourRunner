@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class NotifyOnExit : StateMachineBehaviour
 {
+    [SerializeField] GameObject Katana;
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Debug.Log("Animation finished!");
 
         // Get the parent GameObject of the animator
-        GameObject parent = animator.transform.parent?.gameObject;
-        Debug.Log("Parent: "+parent);
-        if (parent != null)
+        GameObject katana = animator.gameObject.GetComponent<KatanaHolder>().katana;
+        Debug.Log("Parent: "+katana);
+        if (katana != null)
         {
-            parent.gameObject.GetComponent<Katana>().setCollider(false);
+            katana.gameObject.GetComponent<Katana>().setCollider(false);
         }
     }
 }

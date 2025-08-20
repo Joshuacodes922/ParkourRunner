@@ -7,7 +7,7 @@ public class Katana : MonoBehaviour
 
     Collider collider;
 
-
+    
     Animator animator;
 
     private void Start()

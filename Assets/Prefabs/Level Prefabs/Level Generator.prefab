@@ -44,6 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1f168716fe4b0b4e8d895664387c8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chunk: {fileID: 6500282476041804458, guid: f53f5fb0598b65d45a221b343f22a755, type: 3}
+  chunk: {fileID: 6500282476041804458, guid: 590457f074ac3ab4a930a0e75cbff32a, type: 3}
+  chunkPrefabs:
+  - {fileID: 6500282476041804458, guid: 590457f074ac3ab4a930a0e75cbff32a, type: 3}
+  zipline: {fileID: 7784899383124302627, guid: 9ca22411db8eb8242b920f7eb248acaf, type: 3}
   chunkParent: {fileID: 0}
-  speed: 10
+  speed: 28.69
+  chunksBeforeZipline: 39
+  player: {fileID: 0}

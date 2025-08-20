@@ -17,6 +17,12 @@ public class Movement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private float slideRadiusMultiplier = 0.5f; // shrink radius to 50% when sliding
 
+    Animator animator;
+    [SerializeField] GameObject animatorBase;
+
+    //Audio
+    [SerializeField] AudioSource audioSource;
+    GameActionAudio gameActionAudio;
     
 
     //Zipline Player Offset
@@ -67,10 +73,12 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
+        gameActionAudio = audioSource.GetComponent<GameActionAudio>();
 
         originalHeight = controller.height;
         originalCenter = controller.center;
         originalRadius = controller.radius;
+        animator = animatorBase.GetComponent<Animator>();
 
         if (visualModel != null)
             originalVisualRotation = visualModel.localRotation;
@@ -194,9 +202,10 @@ public class Movement : MonoBehaviour
         {
             currentJumps = 0;
             
+            //Double Jumps. Right now its set to 1 so no double jumps
             if (isNearWall)
             {
-                maxJumps = 2;
+                maxJumps = 1;
             }
             else
             {
@@ -208,6 +217,7 @@ public class Movement : MonoBehaviour
                 jumpedNearZipline = true;
             }
             verticalVelocity = jumpForce;
+            animator.Play("Jump");
             currentJumps++;
 
         }
@@ -242,7 +252,9 @@ public class Movement : MonoBehaviour
             controller.radius = originalRadius * slideRadiusMultiplier;
 
             // Set target visual rotation to tilt 90 degrees forward on X
-            targetVisualRotation = originalVisualRotation * Quaternion.Euler(-90f, 0f, 0f);
+            //targetVisualRotation = originalVisualRotation * Quaternion.Euler(-90f, 0f, 0f);
+            animator.Play("Slide");
+            //gameActionAudio.playSfx(gameActionAudio.slide);
         }
     }
 }

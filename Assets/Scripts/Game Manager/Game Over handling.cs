@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameOverhandling : MonoBehaviour
 {
     [SerializeField] GameObject gameOverUI;
-    [SerializeField] GameObject startGame;
+
     bool isInMenu;
 
     private void Awake()
@@ -12,7 +12,7 @@ public class GameOverhandling : MonoBehaviour
         gameOverUI.SetActive(false);
 
         //Change
-        startGame.SetActive(false);
+
         isInMenu = false;
         cursorManagment();
     }
@@ -52,6 +52,12 @@ public class GameOverhandling : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(1);
-        startGame.SetActive(false );
+        Time.timeScale = 1f;
+    }
+
+    public void returnToMenu()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1f;
     }
 }
