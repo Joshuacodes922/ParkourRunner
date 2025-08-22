@@ -36,7 +36,7 @@ public class Movement : MonoBehaviour
 
     public bool isNearZipline = false;
     public bool jumpedNearZipline = false;
-    bool isOnZipline = false;
+    public bool isOnZipline = false;
 
     public bool isNearWall = false;
 
@@ -68,6 +68,7 @@ public class Movement : MonoBehaviour
 
     public bool getJumpedOnZipline()
     {
+        //return jumpedNearZipline;
         return jumpedNearZipline;
     }
     private void Awake()
@@ -85,7 +86,7 @@ public class Movement : MonoBehaviour
 
         isNearZipline = false;
         jumpedNearZipline = false;
-        speedMultiplier = 1.1f;
+        //speedMultiplier = 20.1f;
         isNearWall = false;
         maxJumps = 1;
         currentJumps = 0;
@@ -96,7 +97,7 @@ public class Movement : MonoBehaviour
     {
 
 
-       
+        
         
         if (isOnZipline) return;
         MoveCharacter();

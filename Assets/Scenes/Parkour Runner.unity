@@ -452,6 +452,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201900430}
   m_CullTransparentMesh: 1
+--- !u!1 &218539449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4740027282757175936, guid: 37a311d4fa284084e978469a76714834, type: 3}
+  m_PrefabInstance: {fileID: 926521816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &305456723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1248,10 @@ PrefabInstance:
       value: -28.870695
       objectReference: {fileID: 0}
     - target: {fileID: 2241378269378822165, guid: 37a311d4fa284084e978469a76714834, type: 3}
+      propertyPath: isNearWall
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241378269378822165, guid: 37a311d4fa284084e978469a76714834, type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1463274051}
@@ -1253,6 +1262,14 @@ PrefabInstance:
     - target: {fileID: 2241378269378822165, guid: 37a311d4fa284084e978469a76714834, type: 3}
       propertyPath: yOffsetZipline
       value: 8.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241378269378822165, guid: 37a311d4fa284084e978469a76714834, type: 3}
+      propertyPath: speedMultiplier
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2241378269378822165, guid: 37a311d4fa284084e978469a76714834, type: 3}
+      propertyPath: jumpedNearZipline
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2610572652389081097, guid: 37a311d4fa284084e978469a76714834, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1817,11 +1834,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 447812937}
   m_SourcePrefab: {fileID: 100100000, guid: 37a311d4fa284084e978469a76714834, type: 3}
---- !u!1 &930833061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4100572092669051705, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
-  m_PrefabInstance: {fileID: 1391188301}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1001241237 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 71270572809448204, guid: 184e863e611cf4b4abe04d679fb40fe4, type: 3}
@@ -2050,6 +2062,10 @@ PrefabInstance:
     - target: {fileID: 3222620842752726757, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
       propertyPath: jumpForce
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222620842752726757, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
+      propertyPath: speedMultiplier
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4100572092669051705, guid: 9b2b16742f69f6f41b38df3849f3fc3a, type: 3}
       propertyPath: m_Name
@@ -3995,7 +4011,7 @@ PrefabInstance:
     - target: {fileID: 4502917782501500948, guid: c51d6cfe5946e07429a76c9df10dcad8, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 930833061}
+      objectReference: {fileID: 218539449}
     - target: {fileID: 4502917782501500948, guid: c51d6cfe5946e07429a76c9df10dcad8, type: 3}
       propertyPath: zipline
       value: 
@@ -4006,7 +4022,7 @@ PrefabInstance:
       objectReference: {fileID: 363435178}
     - target: {fileID: 4502917782501500948, guid: c51d6cfe5946e07429a76c9df10dcad8, type: 3}
       propertyPath: chunksBeforeZipline
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4502917782501500948, guid: c51d6cfe5946e07429a76c9df10dcad8, type: 3}
       propertyPath: chunkPrefabs.Array.size

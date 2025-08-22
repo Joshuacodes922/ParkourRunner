@@ -33,7 +33,7 @@ public class ProcedurallevelGeneration : MonoBehaviour
 
     private void Update()
     {
-        
+        Debug.Log("Speed: " + speed);
         IncrementSpeed();
         move();
         DestroyAndCreate();
@@ -63,9 +63,13 @@ public class ProcedurallevelGeneration : MonoBehaviour
 
     public void IncrementSpeed()
     {
+        
         if (player.gameObject.GetComponent<Movement>().getJumpedOnZipline())
         {
+            
             speed *= player.gameObject.GetComponent<Movement>().speedMultiplier;
+
+
             player.gameObject.GetComponent<Movement>().animationMultiplier *= player.gameObject.GetComponent<Movement>().speedMultiplier;
         }
     }
