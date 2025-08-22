@@ -12,6 +12,7 @@ public class Arrow : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Object in contact with Arrow: " +  other);
         if (other.gameObject.CompareTag("Player") && animationNotDone)
         {
             PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>();

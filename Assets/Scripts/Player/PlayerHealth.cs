@@ -25,10 +25,10 @@ public class PlayerHealth : MonoBehaviour
         isDead = false;
         health = initialHealth;
         //text.SetText("Health:" + health.ToString());
-        healthSlider.setMaxValue(health);
+        //healthSlider.setMaxValue(health);
         if (damageHealthUI.GetComponent<Animator>())
         {
-            Debug.Log("found");
+           
         }
         //damageUI = damageHealthUI.GetComponent<Animator>();
     }
@@ -38,6 +38,7 @@ public class PlayerHealth : MonoBehaviour
     public void decreaseHealth(int amount)
     {
         damageUI.Play("Health Damage Animation");
+        gameActionAudio.playSfx(gameActionAudio.damage);
         if (isDead)
         {
             return;
@@ -49,6 +50,7 @@ public class PlayerHealth : MonoBehaviour
         if(health <= 0)
         {
             gameActionAudio.gameNotOver = false;
+            
             gameManager.gameObject.GetComponent<GameOverhandling>().death();
             isDead = true;
         }

@@ -8,8 +8,10 @@ public class Instantiatetrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         if (!other.CompareTag("Player")) return;
-        Vector3 spawnPosition = other.transform.position + other.transform.forward * forwardOffset;
-        Instantiate(spikeObstacle, spawnPosition, Quaternion.identity,spikeObstacleParent);
+        //Vector3 spawnPosition = spikeObstacleParent.gameObject.transform.position + other.transform.forward * forwardOffset;
+        //spikeObstacleParent.GetComponent<Transform>().position = spawnPosition;
+        Instantiate(spikeObstacle, spikeObstacleParent.position, Quaternion.identity,spikeObstacleParent);
     }
 }

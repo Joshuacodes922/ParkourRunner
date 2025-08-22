@@ -26,8 +26,8 @@ public class Movement : MonoBehaviour
     
 
     //Zipline Player Offset
-    float yOffsetZipline = 5f;
-    float xOffsetZipline = 1.5f;
+    [SerializeField] float yOffsetZipline = 5f;
+    [SerializeField] float xOffsetZipline = 1.5f;
     GameObject ziplineHandle;
     
 
@@ -109,11 +109,13 @@ public class Movement : MonoBehaviour
         originalPositionBeforeZipline = transform.position;
         originalRotationBeforeZipline = transform.rotation;
         isOnZipline = true;
+        gameActionAudio.runSource.Stop();
+        gameActionAudio.isOnZipline = true;
         //// Optionally disable the controller to avoid physics conflict
         //controller.enabled = false;
 
         // Snap the player to the handle's position and rotation
-        transform.position = new Vector3(targetTransform.position.x - 1.5f, targetTransform.position.y - 3, targetTransform.position.z);
+        transform.position = new Vector3(targetTransform.position.x - xOffsetZipline, targetTransform.position.y - yOffsetZipline, targetTransform.position.z);
 
         ziplineHandle = parent;
 
@@ -122,11 +124,16 @@ public class Movement : MonoBehaviour
 
         // Zero out movement
         verticalVelocity = 0f;
+        animator.Play("Idle Hang");
+        
     }
 
     public void detachFromRope()
     {
+        gameActionAudio.runSource.Play();
+        gameActionAudio.isOnZipline = false;
         isOnZipline = false;
+        animator.Play("Run");
         controller.enabled = true;
         transform.position = originalPositionBeforeZipline;
         transform.rotation = originalRotationBeforeZipline;
@@ -234,9 +241,9 @@ public class Movement : MonoBehaviour
 
     public void checkNearWall(bool value)
     {
-        Debug.Log("isNearWall: " + isNearWall);
+
         isNearWall = value;
-        Debug.Log("isNearWall: " + isNearWall);
+
     }
 
     void OnSlide(InputValue value)
@@ -254,7 +261,8 @@ public class Movement : MonoBehaviour
             // Set target visual rotation to tilt 90 degrees forward on X
             //targetVisualRotation = originalVisualRotation * Quaternion.Euler(-90f, 0f, 0f);
             animator.Play("Slide");
-            //gameActionAudio.playSfx(gameActionAudio.slide);
+            
+            gameActionAudio.playSfx(gameActionAudio.slide);
         }
     }
 }

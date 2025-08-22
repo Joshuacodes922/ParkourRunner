@@ -3,17 +3,20 @@ using UnityEngine;
 public class GameActionAudio : MonoBehaviour
 {
     [SerializeField] AudioSource SFXSource;
-    [SerializeField] AudioSource runSource;
+    [SerializeField] public AudioSource runSource;
     public PlayerAnimationChecker playerAnimationChecker;
     public AudioClip run;
     public AudioClip slash;
     public AudioClip slide;
+    public AudioClip damage;
     public bool gameNotOver = true;
+    public bool isOnZipline;
 
     private void Start()
     {
         runSource.clip = run;
         gameNotOver = true;
+        isOnZipline = false;
     }
     private void Update()
     {
@@ -22,7 +25,7 @@ public class GameActionAudio : MonoBehaviour
             runSource.Stop();
             return;
         }
-        if (runSource.isPlaying) return;
+        if (runSource.isPlaying || isOnZipline) return;
 
         
         

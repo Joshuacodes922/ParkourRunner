@@ -23,6 +23,6 @@ public class PlayerAnimationChecker : MonoBehaviour
         {
             isRunning = false;
         }
-        Debug.Log("IsRunning: " + isRunning);
+
     }
 }

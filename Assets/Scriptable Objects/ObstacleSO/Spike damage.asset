@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Spike damage
   m_EditorClassIdentifier: 
   name: Spike
-  damage: 1
+  damage: 2

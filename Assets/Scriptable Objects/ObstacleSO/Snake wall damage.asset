@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Snake wall damage
   m_EditorClassIdentifier: 
   name: Spike
-  damage: 10
+  damage: 5

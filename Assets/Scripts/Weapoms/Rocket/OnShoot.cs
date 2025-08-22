@@ -25,9 +25,9 @@ public class OnShooting : MonoBehaviour
     }
     void OnShoot(InputValue value)
     {
-        Debug.Log("Shooting before current weapon");
+
         if (!currentWeapon) return;
-        Debug.Log("Shooting after current weapon");
+
         if (weaponSO.slashWeapon)
         {
             animator.Play("Slash");
