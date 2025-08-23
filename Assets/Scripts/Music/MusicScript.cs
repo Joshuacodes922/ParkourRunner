@@ -8,10 +8,10 @@ public class MusicScript : MonoBehaviour
 
     private static MusicScript instance;
     private string originalScene;
+    private bool firstLoad = true; // <--- new flag
 
     private void Awake()
     {
-        // Singleton check
         if (instance != null && instance != this)
         {
             Destroy(gameObject);
@@ -21,25 +21,32 @@ public class MusicScript : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
 
-        // Start music
-        music.clip = musicClip;
-        music.loop = true;
-        music.Play();
+        if (music == null)
+            music = gameObject.AddComponent<AudioSource>();
 
-        // Remember the scene we first spawned in
+        if (musicClip != null)
+        {
+            music.clip = musicClip;
+            music.loop = true;
+            music.Play();
+        }
+
         originalScene = SceneManager.GetActiveScene().name;
-
-        // Listen for scene changes
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // If we come back to the original scene, kill this music object
+        if (firstLoad)
+        {
+            firstLoad = false;
+            return; // ignore the initial scene load
+        }
+
         if (scene.name == originalScene)
         {
             Destroy(gameObject);
-            instance = null; // reset so if you leave again, new one can spawn
+            instance = null;
         }
     }
 }
