@@ -7,7 +7,7 @@ public class ScoreManager : MonoBehaviour
     int coinsPickedUp;
 
     [SerializeField] TMP_Text text;
-    [SerializeField] TMP_Text highscore;
+
     int health;
 
     [SerializeField] int pointsPerSecond = 2; // score increase per second
@@ -42,7 +42,6 @@ public class ScoreManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("HighScore", score);
             PlayerPrefs.Save();
-            highscore.SetText(score.ToString());
         }
     }
 
