@@ -32,7 +32,7 @@
 ---
 
 ## Development Journey
-This is my **first game**, and I have been working on it for about two months. While the project is still a work-in-progress, it represents a huge milestone for me.
+This is my **first game**, and I worked on it for about two months. 
 
 * **Timeline:** 2 Months
 * **Art:** 100% custom 3D assets created by me.
