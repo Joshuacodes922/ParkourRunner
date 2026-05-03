@@ -32,7 +32,6 @@
 ---
 
 ## Development Journey
-This is my **first game**, and I worked on it for about two months. 
 
 * **Timeline:** 2 Months
 * **Art:** 100% custom 3D assets created by me.
